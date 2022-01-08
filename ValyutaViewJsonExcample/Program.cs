@@ -20,13 +20,19 @@ namespace ValyutaViewJsonExcample
 
             valyutas = JsonConvert.DeserializeObject<List<Valyuta>>(json);
 
+            Console.Write("Summa : ");
 
+            double uzs = Convert.ToDouble(Console.ReadLine());
 
+            Console.WriteLine($"{uzs} uzs = {UzsToUsd(uzs)} $");
 
+            Console.ReadKey();
         }
         static double UzsToUsd(double uzs)
         {
             Valyuta usd = valyutas.Where(o => o.Code == "USD").FirstOrDefault();
+
+            Console.WriteLine("\t"+usd.Date+" dagi holatga kora");
 
             return uzs / usd.Cb_price;
         }

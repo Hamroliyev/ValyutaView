@@ -24,6 +24,12 @@ namespace ValyutaViewJsonExcample
 
 
         }
+        static double UzsToUsd(double uzs)
+        {
+            Valyuta usd = valyutas.Where(o => o.Code == "USD").FirstOrDefault();
+
+            return uzs / usd.Cb_price;
+        }
         static string GetDataAsJson(string url)
         {
             HttpClient client = new HttpClient();
